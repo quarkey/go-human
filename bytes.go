@@ -13,6 +13,10 @@ var suffix = []string{"B", "KB", "MB", "GB", "TB", "PB", "EB"}
 // BytesToHuman returns size in bytes as human readable with a suffix included
 // in the string. Supported: B, KB, MG, GB, TB, PB and EB
 func BytesToHuman(i int64) string {
+	if i == 0 || i < 0 {
+		return "0.00B"
+	}
+
 	expo := math.Floor(math.Log10(float64(i)) / math.Log10(1024.0))
 	hum := float64(i) / math.Pow(1024.0, expo)
 	return fmt.Sprintf("%.2f%s", hum, suffix[int(expo)])

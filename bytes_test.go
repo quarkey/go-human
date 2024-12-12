@@ -23,6 +23,16 @@ func TestBytesToHuman(t *testing.T) {
 		t.Logf("BytesToHuman(%d) got == %q want, %q", c.b, got, c.h)
 	}
 
+	got := human.BytesToHuman(0)
+	if got != "0.00B" {
+		t.Errorf("BytesToHuman(0) got == %q want, %q", got, "0.00B")
+	}
+
+	got = human.BytesToHuman(-10)
+	if got != "0.00B" {
+		t.Errorf("BytesToHuman(0) got == %q want, %q", got, "0.00B")
+	}
+
 }
 
 func TestToBytes(t *testing.T) {
